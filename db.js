@@ -1,16 +1,14 @@
-const dotenv = require('dotenv');
-const path = require('path');
+const {DB,DB_USER,DB_PASSWORD,DB_PORT,DB_HOST,DB_DIALECT} = require('./common/config');
 
-dotenv.config({
-    path: path.join(__dirname, './.env')
-})
+const dotenv = require('dotenv');
+
 const Sequelize = require('sequelize');
 
                                 //database username   password
-const sequelize = new Sequelize(process.env.DB, process.env.DB_USER, process.env.DB_PASSWORD, {
-    host: process.env.DB_HOST,
-    port: +process.env.DB_PORT,
-    dialect: process.env.DB_DIALECT,
+const sequelize = new Sequelize(DB,DB_USER,DB_PASSWORD, {
+    host: DB_HOST,
+    port: +DB_PORT,
+    dialect: DB_DIALECT,
 })
 
 sequelize.authenticate().then(
