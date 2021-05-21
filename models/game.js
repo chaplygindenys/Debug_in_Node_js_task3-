@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    return sequelize.define('games', {
+    return sequelize.define('game', {
         title: {
             type: DataTypes.STRING(25),
             allowNull: false,
@@ -36,7 +36,7 @@ module.exports = function(sequelize, DataTypes) {
         }
     },
         {
-            tableName: 'games'
+            tableName: 'game'
         }
     );
 };

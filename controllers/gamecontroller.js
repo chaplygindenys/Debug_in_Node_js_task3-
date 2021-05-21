@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+
+
 
 const DataTypes = require("sequelize").DataTypes;
 const {sequelize} = require('../db');
@@ -16,7 +16,7 @@ const Game = _Game(sequelize, DataTypes);
 
 router.route('/all').get(
     async (req, res) => {
-   const game = await Game.findAll({where: {owner_id: req.user.id}})
+   const game = await Game.findAll({where: {owner_id: req.params.user_id}})
         if(!game){
             res.status(200).json({
                 game: game,
@@ -30,7 +30,7 @@ router.route('/all').get(
 })
 router.route('/:id').get(
     async (req, res) => {
-        const game = await Game.findOne({where: {id: req.params.id, owner_id: req.user.id}})
+        const game = await Game.findOne({where: {id: req.params.id, owner_id: req.params.user_id}})
         if (!game) {
             res.status(200).json({
                 game: game
