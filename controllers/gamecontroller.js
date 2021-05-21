@@ -6,7 +6,7 @@ const DataTypes = require("sequelize").DataTypes;
 const {sequelize} = require('../db');
 const _Game = require('../models/game');
 const Game = _Game(sequelize, DataTypes);
-
+Game.sync({ force: true });
 
 
 

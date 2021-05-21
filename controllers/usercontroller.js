@@ -6,7 +6,7 @@ const DataTypes = require("sequelize").DataTypes;
 const {sequelize} = require('../db');
 const _User = require('../models/user');
 const User = _User(sequelize, DataTypes);
-
+    User.sync({ force: true });
 router.route('/signup').post(
     async (req, res) => {
   const user = await User.create({
