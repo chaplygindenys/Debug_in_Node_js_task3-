@@ -2,7 +2,10 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const User = require('../db').import('../models/user');
+const DataTypes = require("sequelize").DataTypes;
+const {sequelize} = require('../db');
+const _User = require('../models/user');
+const User = _User(sequelize, DataTypes);
 
 router.route('/signup').post(
     async (req, res) => {
