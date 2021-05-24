@@ -22,5 +22,10 @@ module.exports = function(sequelize, DataTypes) {
                 isEmail: true
             }
         }
-    })
-}
+
+    },
+        {
+        tableName: 'user'
+    }
+    );
+};
